@@ -1,120 +1,89 @@
 body {
-  background: linear-gradient(
-      to bottom,
-      #111 20%,
-      #ffffff 80%
-  );
+  background: linear-gradient(to bottom, #111 20%, #ffffff 80%);
   min-height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
 }
-  
-  /* опишем базовый стиль кнопки калькулятора */
-  .my-btn { 
-      margin-right: 5px;           /* задаем отступ от кнопки справа */
-      margin-top: 10px;             /* задаем отступ от кнопки сверху*/
-      width: 80px;                 /* задаем ширину кнопки */
-      height: 80px;                /* задаем высоту кнопки */
-      border-radius: 10%;          /* округляем кнопку */   /*скругление кнопки всех кнопок, кроме равно!*/
-      border: none;                /* отключаем обводку */
-      background: #a1a1a1;         /* задаем серый цвет кнопки */
-      color: rgb(235, 235, 235);                /* задаем белый цвет текста внутри кнопки */ /*также задает цвет шрифта*/
-      font-size: 1.5rem;           /* увеличим размер шрифта */
-      font-family: 'Arial', Helvetica, sans-serif; /* сменим шрифт, Arial, Helvetica, sans-serif / Times New Roman', Times, serif*/ 
-      font-weight: 0; /*насколько жирный/тонкий шрифт*/
-      cursor: pointer;             /* при наведении на кнопку курсор будет изменен
-                                      со стрелки на 'указательный палец' */
-      user-select: none;           /* отключаем возможность выделить текст внутри кнопки */
-      
-    } 
-    /* hover - это состояние элемента, когда на него наведен курсор */
-    .my-btn:hover {
-      background: rgb(135, 135, 135); /* при наведение курсора на кнопку, она будет окрашена в серый */
-    }
-    /* active - это состояние активации элемента. В случае кнопки - нажатие на нее */
-    .my-btn:active {
-      filter: brightness(130%); /* увеличим интенсивность цвета для эффекта вспышки */
-    }
-    .my-btn.theme {
-      width: 212px;
-      height: 40px;
-      border-radius: 10px;
-      margin-right: 6px;
-      background: #000000;
-      border: 2px solid rgb(237, 239, 240);
-    }
-    /* селектор для кнопок первостепенных операций */
-    .my-btn.primary { 
-      background: rgb(171, 28, 6); /* цвет кнопки оранжевый */
-      color: white;
-      border: 2px solid #ffffff;
-    }
-    /* селектор для кнопок второстепенных операций */
-    .my-btn.secondary { 
-      background: rgb(171, 28, 6); /* цвет кнопки сервый */
-      color:rgb(255, 255, 255);
-    }
 
-    .my-btn.speed {
-      color: red;
-      background-color: black;
-      border: 2px solid red;
-    }
-    
-    /* селектор для кнопки расчета выражения (=) */
-    .my-btn.execute { 
-      width: 80px;          /* сделаем кнопку шире других */
-      border-radius: 10px;   /* подкорректируем округлость */  /*скругление кнопки равно!*/
-      color: white;
-      background-color: #000000;
-    }
+.my-btn {
+  margin-right: 5px;
+  margin-top: 10px;
+  width: 80px;
+  height: 80px;
+  border-radius: 10%;
+  border: none;
+  background: #a1a1a1;
+  color: rgb(235, 235, 235);
+  font-size: 1.5rem;
+  font-family: 'Arial', Helvetica, sans-serif;
+  font-weight: 400;
+  cursor: pointer;
+  user-select: none;
+}
+.my-btn:hover  { background: rgb(135, 135, 135); }
+.my-btn:active { filter: brightness(130%); }
 
-    .my-btn.cancel {
-      margin-right: 5px;           /* задаем отступ от кнопки справа */
-      margin-top: 5px;             /* задаем отступ от кнопки сверху*/
-      width: 80px;                 /* задаем ширину кнопки */
-      height: 80px;                /* задаем высоту кнопки */
-      border-radius: 10%; 
-      color: rgb(171, 28, 6);
-      background-color: white;
-      border: 2px solid gray;
-    }
-    
-    /* селектор для поля вывода результата */
-    .result { 
-      width: 420px; /*отвечает за размер окна в ширину*/
-      height: 70px; /*отвечает за размер окна в высоту*/
-      margin-bottom: 10px;         /* отступ снизу */
-      padding-right: 10px;         /* выступ справа */
-      background: rgb(255, 255, 255); /* цвет можно задавать и таким образом */
-      text-align: right;           /* примагнитим текст к правой стороне */
-      color: #000000;              /* цвет текста белый */
-      font-size: 3.5rem;
-      font-family: Arial, Helvetica, sans-serif;
-      font-weight: 700; /*насколько жирный шрифт*/
-      border-radius: 15px; /*скругление окна вывода!*/
-      border: 2px solid #333;  /*окантовка*/
-    }
+/* orion-theme (бывший theme) */
+.orion-theme {
+  width: 212px;
+  height: 40px;
+  border-radius: 10px;
+  margin-right: 6px;
+  background: #000000;
+  border: 2px solid rgb(237, 239, 240);
+}
 
-    .my-list {
-      margin-right: 5px;  
-      margin-top: 5px;
-      color: white; 
-      width: 175px;
-      height: 50px;
-      border-radius: 0%;
-      background: rgb(202, 119, 17);
-    }
-  
-    .my-details {
-      color: white; 
-    }
-  
-    .my-text {
-      color:aliceblue;
-    }
-  
-    mark {
-      background-color: white;
-    }
+/* orion-primary (бывший primary) */
+.orion-primary {
+  background: rgb(171, 28, 6);
+  color: white;
+  border: 2px solid #ffffff;
+}
+
+/* orion-secondary (бывший secondary) */
+.orion-secondary {
+  background: rgb(171, 28, 6);
+  color: white;
+}
+
+/* orion-speed (бывший speed) */
+.orion-speed {
+  color: red;
+  background-color: black;
+  border: 2px solid red;
+}
+
+/* orion-execute (бывший execute) */
+.orion-execute {
+  width: 80px;
+  border-radius: 10px;
+  color: white;
+  background-color: #000000;
+}
+
+/* orion-cancel (бывший cancel) */
+.orion-cancel {
+  width: 80px;
+  height: 80px;
+  border-radius: 10%;
+  color: rgb(171, 28, 6);
+  background-color: white;
+  border: 2px solid gray;
+}
+
+/* orion-result (бывший result) */
+.orion-result {
+  width: 420px;
+  height: 70px;
+  margin-bottom: 10px;
+  padding-right: 10px;
+  background: rgb(255, 255, 255);
+  text-align: right;
+  color: #000000;
+  font-size: 3.5rem;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: 700;
+  border-radius: 15px;
+  border: 2px solid #333;
+}

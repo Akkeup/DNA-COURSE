@@ -1,24 +1,23 @@
 window.onload = function() { 
-    let a = ''
-    let b = ''
-    let expressionResult = ''
-    let selectedOperation = null 
-    
+    let orionA = ''
+    let orionB = ''
+    let orionResult = ''
+    let orionOperation = null 
 
-    const outputElement = document.getElementById("result")
+    const orionDisplay = document.getElementById("orion-result")
     const digitButtons = document.querySelectorAll('[id ^= "btn_digit_"]')
 
     function onDigitButtonClicked(digit) {
-        if (!selectedOperation) {
-            if ((digit != '.') || (digit == '.' && !a.includes(digit))) { 
-                a += digit;
+        if (!orionOperation) {
+            if ((digit != '.') || (digit == '.' && !orionA.includes(digit))) { 
+                orionA += digit;
             }
-            outputElement.innerHTML = a;
+            orionDisplay.innerHTML = orionA;
         } 
         else {
-            if ((digit != '.') || (digit == '.' && !b.includes(digit))) { 
-                b += digit;
-                outputElement.innerHTML = b;        
+            if ((digit != '.') || (digit == '.' && !orionB.includes(digit))) { 
+                orionB += digit;
+                orionDisplay.innerHTML = orionB;        
             }
         }
     }
@@ -31,235 +30,119 @@ window.onload = function() {
     });
 
     function cumulative() {
-        if (b === '' || !selectedOperation) {
+        if (orionB === '' || !orionOperation) {
             return;
         }
-
-        switch (selectedOperation) {
-            case '+':
-                a = ((+a) + (+b)).toString(); 
-                break;
-            case '-':
-                a = ((+a) - (+b)).toString();
-                break;
-            // case 'x':
-            //     a = ((+a) * (+b)).toString();
-            //     break;
-            // case '/':
-            //     a = ((+a) / (+b)).toString();
-            //     break;
+        switch (orionOperation) {
+            case '+': orionA = ((+orionA) + (+orionB)).toString(); break;
+            case '-': orionA = ((+orionA) - (+orionB)).toString(); break;
+            case 'x': orionA = ((+orionA) * (+orionB)).toString(); break;
+            case '/': orionA = ((+orionA) / (+orionB)).toString(); break;
         }
-
-        outputElement.innerHTML = a;
-        b = '';
+        orionDisplay.innerHTML = orionA;
+        orionB = '';
     }
 
-    document.getElementById("btn_op_mult").onclick = function() { 
-        if (a === '') return;
-        cumulative();
-        selectedOperation = 'x';
-    }
-    document.getElementById("btn_op_plus").onclick = function() { 
-        if (a === '') return;
-        cumulative();
-        selectedOperation = '+';
-    }
-    document.getElementById("btn_op_minus").onclick = function() { 
-        if (a === '') return;
-        cumulative();
-        selectedOperation = '-';
-    }
-    document.getElementById("btn_op_div").onclick = function() { 
-        if (a === '') return;
-        cumulative();
-        selectedOperation = '/';
-    }
+    document.getElementById("btn_op_mult").onclick    = function() { if (orionA === '') return; cumulative(); orionOperation = 'x'; }
+    document.getElementById("btn_op_plus").onclick    = function() { if (orionA === '') return; cumulative(); orionOperation = '+'; }
+    document.getElementById("btn_op_minus").onclick   = function() { if (orionA === '') return; cumulative(); orionOperation = '-'; }
+    document.getElementById("btn_op_div").onclick     = function() { if (orionA === '') return; cumulative(); orionOperation = '/'; }
+
     document.getElementById("btn_op_sign").onclick = function() {
-        if (!selectedOperation) {
-            a = -a;
-            outputElement.innerHTML = a;
-        }
-        else {
-            b = -b;
-            outputElement.innerHTML = b;
-        }
+        if (!orionOperation) { orionA = -orionA; orionDisplay.innerHTML = orionA; }
+        else                 { orionB = -orionB; orionDisplay.innerHTML = orionB; }
     }
+
     document.getElementById("btn_op_percent").onclick = function() {
-        if (!selectedOperation) {
-            a /= 100;
-            outputElement.innerHTML = a;
-        }
-        else {
-            b /= 100;
-            outputElement.innerHTML = b;              
-        }
+        if (!orionOperation) { orionA /= 100; orionDisplay.innerHTML = orionA; }
+        else                 { orionB /= 100; orionDisplay.innerHTML = orionB; }
     }
+
     document.getElementById("btn_op_backspace").onclick = function() {
-        if (!selectedOperation) {
-            a = outputElement.innerHTML;
-            if (a.length === 2 && a[0] === '-') {
-                a = '';
-                outputElement.innerHTML = 0;
-            }
-            else {
-                if (a.length > 1 && a !== '') {
-                    a = a.slice(0, -1);
-                    outputElement.innerHTML = a;
-                }
-                else {
-                    a = '';
-                    outputElement.innerHTML = 0;
-                }
-            }
-        }
-        else {
-            b = outputElement.innerHTML;
-            if (b.length === 2 && b[0] === '-') {
-                b = '';
-                outputElement.innerHTML = 0;
-            }
-            else {
-                if (b.length > 1 && b !== '') {
-                    b = b.slice(0, -1);
-                    outputElement.innerHTML = b;
-                }
-                else {
-                    b = '';
-                    outputElement.innerHTML = 0;
-                }
-            }
+        if (!orionOperation) {
+            orionA = orionDisplay.innerHTML;
+            if (orionA.length === 2 && orionA[0] === '-') { orionA = ''; orionDisplay.innerHTML = 0; }
+            else if (orionA.length > 1) { orionA = orionA.slice(0, -1); orionDisplay.innerHTML = orionA; }
+            else { orionA = ''; orionDisplay.innerHTML = 0; }
+        } else {
+            orionB = orionDisplay.innerHTML;
+            if (orionB.length === 2 && orionB[0] === '-') { orionB = ''; orionDisplay.innerHTML = 0; }
+            else if (orionB.length > 1) { orionB = orionB.slice(0, -1); orionDisplay.innerHTML = orionB; }
+            else { orionB = ''; orionDisplay.innerHTML = 0; }
         }
     }
+
     document.getElementById("btn_op_square").onclick = function() {
-        if (!selectedOperation) {
-            a *= a;
-            outputElement.innerHTML = a;
-        }
-        else {
-            b *= b;
-            outputElement.innerHTML = b;
-        }
+        if (!orionOperation) { orionA *= orionA; orionDisplay.innerHTML = orionA; }
+        else                 { orionB *= orionB; orionDisplay.innerHTML = orionB; }
     }
+
     document.getElementById("btn_op_sqrt").onclick = function() {
-        if (!selectedOperation) {
-            a = a ** 0.5;
-            outputElement.innerHTML = a;
-        }
-        else {
-            b = b ** 0.5;
-            outputElement.innerHTML = b;
-        }
+        if (!orionOperation) { orionA = orionA ** 0.5; orionDisplay.innerHTML = orionA; }
+        else                 { orionB = orionB ** 0.5; orionDisplay.innerHTML = orionB; }
     }
+
     document.getElementById("btn_op_factorial").onclick = function() {
-        let res = 1;
-        if (!selectedOperation) {
-            for (let i = 1; i <= a; i++) {
-                res *= i;
-            }
-            a = res;
-            outputElement.innerHTML = a;
-        }
-        else {
-            for (let i = 1; i <= b; i++) {
-                res *= i;
-            }
-            b = res;
-            outputElement.innerHTML = b;
+        let orionFactorial = 1;
+        if (!orionOperation) {
+            for (let i = 1; i <= orionA; i++) orionFactorial *= i;
+            orionA = orionFactorial;
+            orionDisplay.innerHTML = orionA;
+        } else {
+            for (let i = 1; i <= orionB; i++) orionFactorial *= i;
+            orionB = orionFactorial;
+            orionDisplay.innerHTML = orionB;
         }
     }
+
     document.getElementById("btn_op_speed").onclick = function() {
-        const minutes = parseFloat(!selectedOperation ? a : b);
+        const orionMinutes = parseFloat(!orionOperation ? orionA : orionB);
+        if (isNaN(orionMinutes) || orionMinutes < 0) { orionDisplay.innerHTML = 0; return; }
 
-        if (isNaN(minutes) || minutes < 0) {
-            outputElement.innerHTML = 0;
-            return;
-        }
+        const orionTime = orionMinutes * 60;
+        let orionVelocity;
 
-        const t = minutes * 60;
-        let v;
+        if (orionTime <= 510)        orionVelocity = 55 * orionTime;
+        else if (orionTime <= 11880) orionVelocity = 7800 - 0.35 * (orionTime - 510);
+        else if (orionTime <= 16200) orionVelocity = 8900 - 12   * (orionTime - 11880);
+        else { orionDisplay.innerHTML = "Err: >270 мин"; return; }
 
-        if (t <= 150) {
-            v = 55 * t;
-        }
-        else if (t <= 11880) {
-            const t2 = t - 510;
-            v = 7800 - 0.35 * t2;
-        }
-        else if (t <= 16200) {
-            const t3 = t - 11880;
-            v = 8900 - 12 * t3;
-        }
-        else {
-            outputElement.innerHTML = Infinity;
-            return;
-        }
+        orionVelocity = Math.max(0, Math.round(orionVelocity));
 
-        v = Math.max(0, Math.round(v));
+        if (!orionOperation) orionA = orionVelocity.toString();
+        else                 orionB = orionVelocity.toString();
 
-        if (!selectedOperation) {
-            a = v.toString;
-        }
-        else {
-            b = v.toString();
-        }
-
-        outputElement.innerHTML = v;
+        orionDisplay.innerHTML = orionVelocity;
     }
-    flag_1 = true;
+
+    let orionPageTheme = true;
     document.getElementById("btn_change_theme").onclick = function() {
-        flag_1 = !flag_1;
-        if (flag_1) {
-            document.body.style.backgroundColor = 'black';
-        }
-        else {
-            document.body.style.backgroundColor = 'white';
-        }
+        orionPageTheme = !orionPageTheme;
+        document.body.style.backgroundColor = orionPageTheme ? 'black' : 'white';
     }
-    flag_2 = true;
+
+    let orionWindowTheme = true;
     document.getElementById("btn_change_res_theme").onclick = function() {
-        flag_2 = !flag_2;
-        if (flag_2) {
-            document.getElementById("result").style.backgroundColor = 'white';
-            document.getElementById("result").style.color = 'black';
-        }
-        else {
-            document.getElementById("result").style.backgroundColor = 'black';
-            document.getElementById("result").style.color = 'white';
-        }
+        orionWindowTheme = !orionWindowTheme;
+        orionDisplay.style.backgroundColor = orionWindowTheme ? 'white' : 'black';
+        orionDisplay.style.color           = orionWindowTheme ? 'black' : 'white';
     }
 
     document.getElementById("btn_op_clear").onclick = function() { 
-        a = ''
-        b = ''
-        selectedOperation = ''
-        expressionResult = ''
-        outputElement.innerHTML = 0
+        orionA = ''; orionB = ''; orionOperation = null; orionResult = '';
+        orionDisplay.innerHTML = 0;
     }
 
     document.getElementById("btn_op_equal").onclick = function() { 
-        if (a === '' || b === '' || !selectedOperation)
-            return
-        switch(selectedOperation) { 
-            case 'x':
-                expressionResult = (+a) * (+b)
-                break;
-            case '+':
-                expressionResult = (+a) + (+b)
-                break;
-            case '-':
-                expressionResult = (+a) - (+b)
-                break;
-            case '/':
-                expressionResult = (+a) / (+b)
-                break;
-            default:
-                break;
+        if (orionA === '' || orionB === '' || !orionOperation) return;
+        switch (orionOperation) {
+            case 'x': orionResult = (+orionA) * (+orionB); break;
+            case '+': orionResult = (+orionA) + (+orionB); break;
+            case '-': orionResult = (+orionA) - (+orionB); break;
+            case '/': orionResult = (+orionA) / (+orionB); break;
         }
-        
-        a = expressionResult.toString()
-        b = ''
-        selectedOperation = null
-
-        outputElement.innerHTML = a
+        orionA = orionResult.toString();
+        orionB = ''; orionOperation = null;
+        orionDisplay.innerHTML = orionA;
     }
 };

@@ -1,85 +1,56 @@
 <!DOCTYPE html>
 <html>
-
 <head>
-  <title>Orion-Калькулятор</title>
-  <link rel="stylesheet" href="calculator.css">
-  <script type="text/javascript" src="script.js"></script>
+<title>Orion-Калькулятор</title>
+<link rel="stylesheet" href="calculator.css">
+<script type="text/javascript" src="script.js"></script>
 </head>
-
 <body>
-  <div> <!-- div - это базовый html-контейнер, который может содержать в себе другие html-элементы. -->
-    
-    <!-- блок с экраном калькулятора, где будет выводиться результат вычислений. -->
-      <div id="result" class="result">
-        0 
-      </div>
-      <button id="btn_change_theme" class="my-btn theme">page-th</button>
-      <button id="btn_change_res_theme" class="my-btn theme">win-th</button>
-    <!-- блок с кнопками калькулятора. -->
+<div>
+  <div id="orion-result" class="orion-result">
+    0
+  </div>
+
+  <button id="btn_change_theme"     class="my-btn orion-theme">page-th</button>
+  <button id="btn_change_res_theme" class="my-btn orion-theme">win-th</button>
+
+  <div>
     <div>
-      <!--горизонтальный ряд из четырех кнопок-->
-      <div>
-        <button id="btn_op_backspace" class="my-btn secondary">⌫</button>  
-        <button id="btn_op_clear" class="my-btn cancel">C</button>    <!-- про тэг кнопки: https://www.w3schools.com/tags/tag_button.asp -->
-        <button id="btn_op_sign" class="my-btn secondary">+/-</button>
-        <button id="btn_op_div" class="my-btn primary">/</button>
-        <button id="btn_op_speed" class="my-btn speed">speed</button>
-      </div>
-
-      <div>
-        <button id="btn_digit_7" class="my-btn">7</button>
-        <button id="btn_digit_8" class="my-btn">8</button>
-        <button id="btn_digit_9" class="my-btn">9</button>
-        <button id="btn_op_mult" class="my-btn primary">x</button>
-        <button id="btn_op_square" class="my-btn primary">x²</button>
-      </div>
-
-      <div>
-        <button id="btn_digit_4" class="my-btn">4</button>
-        <button id="btn_digit_5" class="my-btn">5</button>
-        <button id="btn_digit_6" class="my-btn">6</button>
-        <button id="btn_op_minus" class="my-btn primary">-</button>
-        <button id="btn_op_sqrt" class="my-btn primary">√</button>
-      </div>
-
-      <div>
-        <button id="btn_digit_1" class="my-btn">1</button>
-        <button id="btn_digit_2" class="my-btn">2</button>
-        <button id="btn_digit_3" class="my-btn">3</button>
-        <button id="btn_op_plus" class="my-btn primary">+</button>
-        <button id="btn_op_factorial" class="my-btn primary">x!</button>
-      </div>
-
-      <div>
-        <button id="btn_op_percent" class="my-btn secondary">%</button>
-        <button id="btn_digit_000" class="my-btn">000</button>
-        <button id="btn_digit_0" class="my-btn">0</button>
-        <button id="btn_digit_dot" class="my-btn">.</button>
-        <button id="btn_op_equal" class="my-btn primary execute">=</button>
-      </div>
-        <!-- <button id="btn_change_theme" class="my-btn-theme">Th</button>
-        <select id="years" class="my-list">
-          <option>2014</option>
-          <option>2022</option>
-          <option>2026</option>
-        </select>
-      <h1 class="my-text">ЛР выполнена Стукановским Максимом Владимировичем</h1>
-      <h2 class="my-text">Цель работы:</h2>
-      <p class="my-text"><mark>знакомство</mark> с инструментами построения пользовательских интерфейсов web-сайтов: 
-         <mark>HTML</mark>, <mark>CSS</mark>. В ходе выполнения работы, вам предстоит ознакомиться с кодом реализации простого калькулятора,
-         и затем выполнить задания по варианту.
-      </p>
-      <h2 class="my-details">Автор</h2>
-      <details class="my-details">
-        <summary>Стукановский Максим Владимирович</summary>
-        <p>ФИО: Стукановский Максим Владимирович</p>
-        <p>Группа: РТ5-41Б</p>
-      </details>
+      <button id="btn_op_backspace" class="my-btn orion-secondary">⌫</button>
+      <button id="btn_op_clear"     class="my-btn orion-cancel">C</button>
+      <button id="btn_op_sign"      class="my-btn orion-secondary">+/-</button>
+      <button id="btn_op_div"       class="my-btn orion-primary">/</button>
+      <button id="btn_op_speed"     class="my-btn orion-speed">speed</button>
     </div>
     <div>
-      <a href="https://github.com/Akkeup"><button>link to gh</button></a> -->
+      <button id="btn_digit_7"      class="my-btn">7</button>
+      <button id="btn_digit_8"      class="my-btn">8</button>
+      <button id="btn_digit_9"      class="my-btn">9</button>
+      <button id="btn_op_mult"      class="my-btn orion-primary">x</button>
+      <button id="btn_op_square"    class="my-btn orion-primary">x2</button>
+    </div>
+    <div>
+      <button id="btn_digit_4"      class="my-btn">4</button>
+      <button id="btn_digit_5"      class="my-btn">5</button>
+      <button id="btn_digit_6"      class="my-btn">6</button>
+      <button id="btn_op_minus"     class="my-btn orion-primary">-</button>
+      <button id="btn_op_sqrt"      class="my-btn orion-primary">√</button>
+    </div>
+    <div>
+      <button id="btn_digit_1"      class="my-btn">1</button>
+      <button id="btn_digit_2"      class="my-btn">2</button>
+      <button id="btn_digit_3"      class="my-btn">3</button>
+      <button id="btn_op_plus"      class="my-btn orion-primary">+</button>
+      <button id="btn_op_factorial" class="my-btn orion-primary">x!</button>
+    </div>
+    <div>
+      <button id="btn_op_percent"   class="my-btn orion-secondary">%</button>
+      <button id="btn_digit_000"    class="my-btn">000</button>
+      <button id="btn_digit_0"      class="my-btn">0</button>
+      <button id="btn_digit_dot"    class="my-btn">.</button>
+      <button id="btn_op_equal"     class="my-btn orion-primary orion-execute">=</button>
     </div>
   </div>
+</div>
 </body>
 </html>
