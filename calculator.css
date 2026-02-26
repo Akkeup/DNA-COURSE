@@ -1,20 +1,24 @@
 body {
-    background-color:rgb(255, 255, 255);
-    /*background: #f0f0f0 url('https://i.pinimg.com/1200x/6b/ff/8a/6bff8a4c047b75a9fd0fad6ea7d8549c.jpg') no-repeat center/cover fixed;*/
-    display: flex; /*гибкий макет*/
-    justify-content: center;  /* центрирование по горизонтали */
-    align-items: center;      /*центрирование по вертикали*/
-  }
+  background: linear-gradient(
+      to bottom,
+      #111 20%,
+      #ffffff 80%
+  );
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
   
   /* опишем базовый стиль кнопки калькулятора */
   .my-btn { 
       margin-right: 5px;           /* задаем отступ от кнопки справа */
-      margin-top: 5px;             /* задаем отступ от кнопки сверху*/
+      margin-top: 10px;             /* задаем отступ от кнопки сверху*/
       width: 80px;                 /* задаем ширину кнопки */
       height: 80px;                /* задаем высоту кнопки */
-      border-radius: 25%;          /* округляем кнопку */   /*скругление кнопки всех кнопок, кроме равно!*/
+      border-radius: 10%;          /* округляем кнопку */   /*скругление кнопки всех кнопок, кроме равно!*/
       border: none;                /* отключаем обводку */
-      background: #393939;         /* задаем серый цвет кнопки */
+      background: #a1a1a1;         /* задаем серый цвет кнопки */
       color: rgb(235, 235, 235);                /* задаем белый цвет текста внутри кнопки */ /*также задает цвет шрифта*/
       font-size: 1.5rem;           /* увеличим размер шрифта */
       font-family: 'Arial', Helvetica, sans-serif; /* сменим шрифт, Arial, Helvetica, sans-serif / Times New Roman', Times, serif*/ 
@@ -22,7 +26,7 @@ body {
       cursor: pointer;             /* при наведении на кнопку курсор будет изменен
                                       со стрелки на 'указательный палец' */
       user-select: none;           /* отключаем возможность выделить текст внутри кнопки */
-      border: 3px solid #ee3636;
+      
     } 
     /* hover - это состояние элемента, когда на него наведен курсор */
     .my-btn:hover {
@@ -34,27 +38,47 @@ body {
     }
     .my-btn.theme {
       width: 212px;
-      height: 80px;
-      border-radius: 20px;
+      height: 40px;
+      border-radius: 10px;
       margin-right: 6px;
       background: #000000;
-      border: 5px solid rgb(0, 111, 159);
+      border: 2px solid rgb(237, 239, 240);
     }
     /* селектор для кнопок первостепенных операций */
     .my-btn.primary { 
-      background: #000000; /* цвет кнопки оранжевый */
-      color:rgb(0, 111, 159);
+      background: rgb(171, 28, 6); /* цвет кнопки оранжевый */
+      color: white;
+      border: 2px solid #ffffff;
     }
     /* селектор для кнопок второстепенных операций */
     .my-btn.secondary { 
-      background: #000000; /* цвет кнопки сервый */
-      color:rgb(0, 111, 159);
+      background: rgb(171, 28, 6); /* цвет кнопки сервый */
+      color:rgb(255, 255, 255);
+    }
+
+    .my-btn.speed {
+      color: red;
+      background-color: black;
+      border: 2px solid red;
     }
     
     /* селектор для кнопки расчета выражения (=) */
     .my-btn.execute { 
       width: 80px;          /* сделаем кнопку шире других */
-      border-radius: 20px;   /* подкорректируем округлость */  /*скругление кнопки равно!*/
+      border-radius: 10px;   /* подкорректируем округлость */  /*скругление кнопки равно!*/
+      color: white;
+      background-color: #000000;
+    }
+
+    .my-btn.cancel {
+      margin-right: 5px;           /* задаем отступ от кнопки справа */
+      margin-top: 5px;             /* задаем отступ от кнопки сверху*/
+      width: 80px;                 /* задаем ширину кнопки */
+      height: 80px;                /* задаем высоту кнопки */
+      border-radius: 10%; 
+      color: rgb(171, 28, 6);
+      background-color: white;
+      border: 2px solid gray;
     }
     
     /* селектор для поля вывода результата */
@@ -70,7 +94,7 @@ body {
       font-family: Arial, Helvetica, sans-serif;
       font-weight: 700; /*насколько жирный шрифт*/
       border-radius: 15px; /*скругление окна вывода!*/
-      border: 5px solid #333;  /*окантовка*/
+      border: 2px solid #333;  /*окантовка*/
     }
 
     .my-list {

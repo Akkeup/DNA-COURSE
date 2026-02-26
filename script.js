@@ -167,15 +167,43 @@ window.onload = function() {
             outputElement.innerHTML = b;
         }
     }
-    document.getElementById("btn_op_rotate").onclick = function() {
-        if (!selectedOperation) {
-            a = 1/a;
-            outputElement.innerHTML = a;
+    document.getElementById("btn_op_speed").onclick = function() {
+        const minutes = parseFloat(!selectedOperation ? a : b);
+
+        if (isNaN(minutes) || minutes < 0) {
+            outputElement.innerHTML = 0;
+            return;
+        }
+
+        const t = minutes * 60;
+        let v;
+
+        if (t <= 150) {
+            v = 55 * t;
+        }
+        else if (t <= 11880) {
+            const t2 = t - 510;
+            v = 7800 - 0.35 * t2;
+        }
+        else if (t <= 16200) {
+            const t3 = t - 11880;
+            v = 8900 - 12 * t3;
         }
         else {
-            b = 1/b;
-            outputElement.innerHTML = b;
+            outputElement.innerHTML = Infinity;
+            return;
         }
+
+        v = Math.max(0, Math.round(v));
+
+        if (!selectedOperation) {
+            a = v.toString;
+        }
+        else {
+            b = v.toString();
+        }
+
+        outputElement.innerHTML = v;
     }
     flag_1 = true;
     document.getElementById("btn_change_theme").onclick = function() {
