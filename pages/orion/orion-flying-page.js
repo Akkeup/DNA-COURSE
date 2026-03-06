@@ -2,6 +2,7 @@ import { MainPage } from "../main/main-orion-index.js";
 import { BackButtonComponent } from "../../components/back-button/back-button.js";
 import { OrionComponents } from "../../components/orion/orion.js";
 import { OrionAccordion } from "../../components/accordion/orion-accordion.js";
+import { ButtonHome } from "../../components/header/header.js";
 
 
 export class OrionFlyingPage {
@@ -61,13 +62,15 @@ export class OrionFlyingPage {
         mainPage.render();
     }
 
+    clickHome() {
+        const mainPage = new MainPage(this.parent);
+        mainPage.render();
+    }
+
     render() {
         this.parent.innerHTML = "";
         const html = this.getHTML();
         this.parent.insertAdjacentHTML("beforeend", html);
-
-        const backButton = new BackButtonComponent(this.getRoot());
-        backButton.render(this.clickBack.bind(this));
 
         const data = this.getData();
         const orion = new OrionComponents(this.getRoot());
@@ -75,5 +78,11 @@ export class OrionFlyingPage {
 
         const accordion = new OrionAccordion(this.getRoot());
         accordion.render(data);
+
+        const homeButton = new ButtonHome(this.parent);
+        homeButton.render(this.clickHome.bind(this));
+
+        const backButton = new BackButtonComponent(this.getRoot());
+        backButton.render(this.clickBack.bind(this));
     }
 }

@@ -12,21 +12,26 @@ export class OrionCard {
                         <h5 class="card-title">${data.title}</h5>
                         <p class="card-text">${data.text}</p>
                         <button class="btn btn-primary" id="click-card-${data.id}" data-id="${data.id}">more info</button>
+                        <button class="btn btn-danger" id="delete-card-${data.id}" data-id="${data.id}">Delete</button>
                     </div>
                 </div>
             `
         )
     }
 
-    addListener(data, listener) {
+    addListener(data, listener, deleteListener) {
         document
             .getElementById(`click-card-${data.id}`)
             .addEventListener("click", listener);
+
+        document
+            .getElementById(`delete-card-${data.id}`)
+            .addEventListener("click", deleteListener);
     }
 
-    render(data, listener) {
+    render(data, listener, deleteListener) {
         const html = this.getHTML(data);
         this.parent.insertAdjacentHTML("beforeend", html);
-        this.addListener(data,listener)
+        this.addListener(data,listener, deleteListener);
     }
 }

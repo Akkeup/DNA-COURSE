@@ -1,0 +1,17 @@
+#second-page {
+    padding: 24px;
+}
+
+.accordion-button {
+    background-color: #1a1c2e;
+    color: #4da3ff;
+}
+
+.accordion-body {
+    background-color: #0b0d17;
+    color: #ffffff;
+}
+
+.accordion-item {
+    border: 1px solid #1a6bc4;
+}
