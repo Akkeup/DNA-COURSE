@@ -1,17 +1,47 @@
-#second-page {
+#orion-flying-page {
     padding: 24px;
 }
 
 .accordion-button {
-    background-color: #1a1c2e;
-    color: #4da3ff;
+    background-color: #f5f5f5;
+    color: #000000;
+    border-radius: 0 !important;
+    text-transform: uppercase;
+    font-size: 13px;
+    letter-spacing: 1px;
+    font-weight: bold;
+}
+
+.accordion-button:not(.collapsed) {
+    background-color: #000000;
+    color: #ffffff;
+    box-shadow: none;
+}
+
+.accordion-button::after {
+    filter: none;
+}
+
+.accordion-button:not(.collapsed)::after {
+    filter: invert(1);
 }
 
 .accordion-body {
-    background-color: #0b0d17;
-    color: #ffffff;
+    background-color: #ffffff;
+    color: #333333;
+    font-size: 14px;
 }
 
 .accordion-item {
-    border: 1px solid #1a6bc4;
+    border: 1px solid #dddddd;
+    border-radius: 0 !important;
+    margin-bottom: 4px;
+}
+
+.card {
+    background-color: #ffffff;
+    border: none;
+    color: #000000;
+    border-radius: 0;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
 }

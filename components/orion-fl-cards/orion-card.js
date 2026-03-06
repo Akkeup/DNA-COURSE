@@ -11,7 +11,7 @@ export class OrionCard {
                     <div class="card-body">
                         <h5 class="card-title">${data.title}</h5>
                         <p class="card-text">${data.text}</p>
-                        <button class="btn btn-primary" id="click-card-${data.id}" data-id="${data.id}">more info</button>
+                        <button class="btn btn-primary" id="click-card-${data.id}" data-id="${data.id}">More info</button>
                         <button class="btn btn-danger" id="delete-card-${data.id}" data-id="${data.id}">Delete</button>
                     </div>
                 </div>

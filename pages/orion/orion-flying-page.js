@@ -15,7 +15,7 @@ export class OrionFlyingPage {
         const allData = [
             {
                 id: 1,
-                src: "",
+                src: "https://images-assets.nasa.gov/image/KSC-20170412-PH_LCH01_0052/KSC-20170412-PH_LCH01_0052~large.jpg?w=1920&h=1280&fit=clip&crop=faces%2Cfocalpoint",
                 title: `Полет ${this.id}`,
                 text: "Космический корабль EFT-1, полет 2014 года",
                 goals: "Испытательный беспилотный полет для проверки теплозащиты, систем навигации и возвращения корабля в атмосферу.",
