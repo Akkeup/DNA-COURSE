@@ -24,7 +24,7 @@ export class OrionFlyingPage {
             },
             {
                 id: 2,
-                src: "",
+                src: "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fs.hdnux.com%2Fphotos%2F01%2F30%2F31%2F26%2F23172504%2F3%2FrawImage.jpg&f=1&nofb=1&ipt=69f9d92af0b48ff029c38813a69dd4b0f979d108003864d6024f66b8c25910d9",
                 title: `Полет ${this.id}`,
                 text: "Космический корабль Artemis I, полет 2021 года",
                 goals: "Первый беспилотный полет в рамках лунной программы Artemis с целью испытания корабля в дальнем космосе и на орбите Луны.",
@@ -33,7 +33,7 @@ export class OrionFlyingPage {
             },
             {
                 id: 3,
-                src: "",
+                src: "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.sciencedaily.com%2Fimages%2F1920%2Fartemis-ii-preflight.webp&f=1&nofb=1&ipt=b17d71570e1995392ef73aacd313fd000d1e76d58759c782f4f1d39b1533c70b",
                 title: `Полет ${this.id}`,
                 text: "Космический корабль Artemis II, полет 2026 года",
                 goals: "Первый пилотируемый полет программы Artemis с облетом Луны для проверки систем жизнеобеспечения и работы экипажа в дальнем космосе.",
