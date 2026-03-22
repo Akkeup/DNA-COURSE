@@ -20,6 +20,10 @@ header {
     flex-wrap: wrap;
 }
 
+#hw-cards {
+    padding: 24px;
+}
+
 .card {
     background-color: #ffffff;
     border: none;

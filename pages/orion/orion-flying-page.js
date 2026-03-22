@@ -3,6 +3,7 @@ import { BackButtonComponent } from "../../components/back-button/back-button.js
 import { OrionComponents } from "../../components/orion/orion.js";
 import { OrionAccordion } from "../../components/accordion/orion-accordion.js";
 import { ButtonHome } from "../../components/header/header.js";
+import { Orion3DModel } from "../../components/orion-3d/orion-3d-model.js";
 
 
 export class OrionFlyingPage {
@@ -75,6 +76,9 @@ export class OrionFlyingPage {
         const data = this.getData();
         const orion = new OrionComponents(this.getRoot());
         orion.render(data);
+
+        const model3d = new Orion3DModel(this.getRoot());
+        model3d.render();
 
         const accordion = new OrionAccordion(this.getRoot());
         accordion.render(data);

@@ -7,7 +7,7 @@ export class OrionCard {
         return (
             `
                 <div class="card" style="width: 300px;">
-                    <img class="card-img-top" src="${data.src}" alt="картинка">
+                    <img class="card-img-top" src="${data.src}" alt="картинка" style="height: 520px; object-fit: cover;">
                     <div class="card-body">
                         <h5 class="card-title">${data.title}</h5>
                         <p class="card-text">${data.text}</p>
