@@ -49,3 +49,12 @@
 *build
 *cmake-build-debug
 *main.dSYM
+
+node_modules/
+.node_modules
+/src/generated/prisma
+.env
+
+package.json
+package-lock.json
+tsconfig.json
