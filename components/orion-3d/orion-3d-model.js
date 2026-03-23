@@ -12,7 +12,7 @@ export class Orion3DModel {
     getHTML() {
         return `
             <div style="margin-top: 1rem;">
-                <h6 style="color: #6c757d;">3D модель корабля Orion</h6>
+                <h6 style="color: #6c757d;">3D модель Астронавта</h6>
                 <div id="orion-3d-container" style="width: 540px; height: 360px; background: #0a0a1a; border-radius: 8px; overflow: hidden; position: relative;">
                     <span id="orion-3d-status" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); color: #aaa; font-size: 14px;">Загрузка модели...</span>
                 </div>

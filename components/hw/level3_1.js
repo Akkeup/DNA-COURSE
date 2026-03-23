@@ -4,6 +4,7 @@ export class levelThreeOneCardComponent {
     }
 
     isPolydrome_solutionOne(input) {
+        if (typeof input === "number") input = { text: String(input), ignoreCase: false };
         const text = input.ignoreCase ? String(input.text).toLowerCase() : String(input.text);
         let chars = text.replace(/\s/g, "").split("");
         let len = chars.length;

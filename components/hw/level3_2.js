@@ -4,6 +4,7 @@ export class levelThreeTwoCardComponent {
     }
 
     isPolydrome_solutionTwo(str) {
+        if (typeof str === "number") str = String(str);
         const normalized = String(str).toLowerCase().replace(/\s/g, "");
         let reverseNormalized = normalized.split("").reverse().join("");
 
