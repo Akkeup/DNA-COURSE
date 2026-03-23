@@ -158,6 +158,7 @@ dist
 
 # Stores VSCode versions used for testing VSCode extensions
 .vscode-test
+.vscode/
 
 # yarn v2
 .yarn/cache
@@ -347,5 +348,7 @@ DerivedData/
 !*.xcodeproj/xcshareddata/
 !*.xcworkspace/contents.xcworkspacedata
 **/xcshareddata/WorkspaceSettings.xcsettings
+
+tsconfig.json
 
 # End of https://www.toptal.com/developers/gitignore/api/macos,windows,linux,webstorm+all,visualstudiocode,xcode,node
