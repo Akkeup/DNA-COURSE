@@ -1,23 +1,23 @@
 [
-    {               
-        "id": 1,
-        "name": "EFT-1",
-        "destination": "Space module tests",                                                      
-        "status": "completed",                                                                 
-        "launchDate": "5-12-2014"                                                           
-    },
-    {               
-        "id": 2,
-        "name": "Artemis I",
-        "destination": "Unpiloted lunar orbital flight tests",                                                      
-        "status": "completed",                                                                 
-        "launchDate": "16-11-2022"                                                           
-    },
-    {               
-        "id": 3,
-        "name": "Artemis II",
-        "destination": "Lunar mission",                                                      
-        "status": "planned",                                                                 
-        "launchDate": "2026"                                                           
-    }
+  {
+    "id": 1,
+    "name": "EFT-1",
+    "destination": "Space module tests",
+    "status": "completed",
+    "launchDate": "5-12-2014"
+  },
+  {
+    "id": 2,
+    "name": "Artemis I",
+    "destination": "Unpiloted lunar orbital flight tests",
+    "status": "completed",
+    "launchDate": "16-11-2022"
+  },
+  {
+    "id": 3,
+    "name": "Artemis II",
+    "destination": "Lunar mission",
+    "status": "planned",
+    "launchDate": "2026"
+  }
 ]
