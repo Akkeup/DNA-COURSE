@@ -44,10 +44,10 @@ export class MainPage {
         return (
             `   <h1>Filter:</h1>
                 <button class="btn btn-filter-all" id="filter-all">all</button>
-                <button class="btn btn-filter-complited" id="filter-completed">completed</button>
-                <button class="btn btn-filter-upcoming" id="filter-upcoming">upcoming</button>
-                <button class="btn btn-filter-canceled" id="filter-canceled">canceled</button>
-                <button class="btn btn-success" id="add-card">Add mission</button>
+                <button class="btn btn-filter-complited" id="filter-completed">Завершенные</button>
+                <button class="btn btn-filter-upcoming" id="filter-upcoming">Планируемые</button>
+                <button class="btn btn-filter-canceled" id="filter-canceled">Отмененные</button>
+                <button class="btn btn-success" id="add-card">Добавить миссию</button>
 
                 <div style="display: grid; grid-template-columns: max-content max-content; gap: 1rem; margin-top: 1rem; align-items: start;">
                     <div id="main-page" class="d-flex flex-wrap"></div>
