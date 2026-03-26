@@ -1,11 +1,6 @@
 import { OrionCard } from "../../components/orion-fl-cards/orion-card.js";
 import { OrionFlyingPage } from "../orion/orion-flying-page.js";
 import { ButtonHome } from "../../components/header/header.js";
-import { levelOneOneCardComponent } from "../../components/hw/level1_1.js";
-import { levelOneTwoCardComponent } from "../../components/hw/level1_2.js";
-import { levelTwoCardComponent } from "../../components/hw/level2.js";
-import { levelThreeOneCardComponent } from "../../components/hw/level3_1.js";
-import { levelThreeTwoCardComponent } from  "../../components/hw/level3_2.js";
 
 export class MainPage {
     constructor(parent) {
@@ -96,29 +91,6 @@ export class MainPage {
         this.parent.insertAdjacentHTML("beforeend", html);
 
         document.getElementById("add-card").addEventListener("click", this.addCard.bind(this));
-        
-        const hwContainer = document.getElementById("hw-cards");
-
-        hwContainer.insertAdjacentHTML("beforeend", `<div id="level1-column" style="display: flex; flex-direction: column; gap: 20px;"></div>`);
-        const level1Column = document.getElementById("level1-column");
-
-        const levelOneCard = new levelOneOneCardComponent(level1Column);
-        levelOneCard.render(this.data);
-
-        const levelOneTwoCard = new levelOneTwoCardComponent(level1Column);
-        levelOneTwoCard.render(this.data);
-
-        const levelTwoCard = new levelTwoCardComponent(hwContainer);
-        levelTwoCard.render();
-
-        hwContainer.insertAdjacentHTML("beforeend", `<div id="level3-column" style="display: flex; flex-direction: column; gap: 20px;"></div>`);
-        const level3Column = document.getElementById("level3-column");
-
-        const levelThreeOneCard = new levelThreeOneCardComponent(level3Column);
-        levelThreeOneCard.render();
-
-        const levelThreeTwoCatd = new levelThreeTwoCardComponent(level3Column);
-        levelThreeTwoCatd.render();
 
         document.getElementById("filter-all").addEventListener("click", () => {
             this.currentFilter = "all";
