@@ -1,5 +1,5 @@
 import express, { Request, Response, NextFunction} from "express";
-import { router as flightRouter } from "./routes/flights";
+import { router as astronautRouter } from "./routes/astronauts";
 
 const app = express();
 const PORT = 3000;
@@ -11,7 +11,7 @@ app.use((req: Request, res: Response, next: NextFunction) => {
     next();
 });
 
-app.use("/flights", flightRouter);
+app.use("/astronauts", astronautRouter);
 
 app.use((req: Request, res: Response) => {
     res.status(404).json({error: "Маршрут не найден!"});

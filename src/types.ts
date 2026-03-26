@@ -1,7 +1,8 @@
-export interface Flight {                                                                     
-    id: number;   
+export interface Astronaut {
+    id: number;
     name: string;
-    destination: string;
-    status: string;                                                                    
-    launchDate: string;
-} 
+    country: string;
+    mission: string;
+    status: string;
+    birthDate: string;
+}

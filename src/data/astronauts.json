@@ -1,0 +1,34 @@
+[
+  {
+    "id": 1,
+    "name": "Рид Уайзман",
+    "country": "США",
+    "mission": "Artemis II (Orion)",
+    "status": "active",
+    "birthDate": "16-02-1975"
+  },
+  {
+    "id": 2,
+    "name": "Виктор Гловер",
+    "country": "США",
+    "mission": "Artemis II (Orion)",
+    "status": "active",
+    "birthDate": "30-04-1976"
+  },
+  {
+    "id": 3,
+    "name": "Кристина Кох",
+    "country": "США",
+    "mission": "Artemis II (Orion)",
+    "status": "active",
+    "birthDate": "29-01-1979"
+  },
+  {
+    "id": 4,
+    "name": "Джереми Хансен",
+    "country": "Канада",
+    "mission": "Artemis II (Orion)",
+    "status": "active",
+    "birthDate": "27-08-1976"
+  }
+]
