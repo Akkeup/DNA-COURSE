@@ -1,6 +1,7 @@
 import { OrionCard } from "../../components/orion-fl-cards/orion-card.js";
 import { OrionFlyingPage } from "../orion/orion-flying-page.js";
 import { ButtonHome } from "../../components/header/header.js";
+import { sumOfSquares, isEqualObj, countPrefixes, isPalindrom1 } from "../../components/hw-cards/hw-tasks.js";
 
 export class MainPage {
     constructor(parent) {
@@ -51,15 +52,12 @@ export class MainPage {
                 <button class="btn btn-filter-canceled" id="filter-canceled">Специалист</button>
                 <button class="btn btn-success" id="add-card">Добавить астронавта</button>
 
-                <div style="display: grid; grid-template-columns: max-content max-content; gap: 1rem; margin-top: 1rem; align-items: start;">
-                    <div id="main-page" class="d-flex flex-wrap"></div>
-                    <div id="hw-cards" class="d-flex flex-wrap gap-3" style="align-items: flex-start;"></div>
-                </div>
+                <div id="main-page" class="d-flex flex-wrap" style="margin-top: 1rem;"></div>
             `
         );
     }
 
-    addCard(e) {
+    addCard() {
         const firstCard = this.data[0];
         const newCard = {...firstCard};
         newCard.id = this.data.length + 1;
@@ -80,7 +78,7 @@ export class MainPage {
         orionPage.render();
     }
 
-    clickHome(e) {
+    clickHome() {
         this.render();
     }
 
@@ -119,9 +117,33 @@ export class MainPage {
         const homeButton = new ButtonHome(this.parent);
         homeButton.render(this.clickHome.bind(this));
 
-        this.filterCards(this.currentFilter).forEach((item) => {
+        const hwTasks = [
+            {
+                label: "1.3",
+                description: "sumOfSquares(arr) — сумма квадратов элементов массива.<br><code>[2014, 2022, 2026]</code>",
+                getAnswer: () => String(sumOfSquares([2014, 2022, 2026])),
+            },
+            {
+                label: "1.7",
+                description: "isEqualObj(a, b) — сравнивает два объекта.<br><code>{name: 'Glover', agency: 'NASA'}</code>",
+                getAnswer: () => String(isEqualObj({ name: "Glover", agency: "NASA" }, { name: "Glover", agency: "NASA" })),
+            },
+            {
+                label: "2.10",
+                description: 'countPrefixes(words, str) — количество слов-префиксов строки.<br><code>["ar","art","artem","reid","vi","artemis"], str="artemis"</code>',
+                getAnswer: () => String(countPrefixes(["ar", "art", "artem", "reid", "vi", "artemis"], "artemis")),
+            },
+            {
+                label: "3.8 Палиндром",
+                description: "isPalindrom — два решения (reverse и два указателя).<br><code>'А луна канула'</code>",
+                getAnswer: () => String(isPalindrom1("А луна канула")),
+            },
+        ];
+
+        const filtered = this.filterCards(this.currentFilter);
+        filtered.forEach((item, index) => {
             const orionCard = new OrionCard(this.pageRoot);
-            orionCard.render(item, this.clickCard.bind(this), this.deleteCard.bind(this));
+            orionCard.render(item, this.clickCard.bind(this), this.deleteCard.bind(this), hwTasks[index]);
         });
     }
 }
