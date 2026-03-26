@@ -7,7 +7,7 @@ export class ButtonHome {
         return (
             `
                 <header class="d-flex align-items-center p-3 bg-dark">
-                    <button id="home-button" class="btn btn-light" type="button">Home</button>
+                    <button id="home-button" class="btn btn-light" type="button">Домой</button>
                 </header>
             `
         );
