@@ -2,41 +2,14 @@ import { OrionCard } from "../../components/orion-fl-cards/orion-card.js";
 import { OrionFlyingPage } from "../orion/orion-flying-page.js";
 import { ButtonHome } from "../../components/header/header.js";
 import { sumOfSquares, isEqualObj, countPrefixes, isPalindrom1 } from "../../components/hw-cards/hw-tasks.js";
+import { ajax } from "../../modules/ajax.js";
+import { astronautUrls } from "../../modules/arstronautsUrls.js";
+import { CreateAstronautPage } from "../create/create-astronaut-page.js";
 
 export class MainPage {
     constructor(parent) {
         this.parent = parent;
         this.currentFilter = "all";
-        this.data = [
-            {
-                id: 1,
-                src: "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7b/Jsc2023e0016434_alt.jpg/500px-Jsc2023e0016434_alt.jpg",
-                title: "Рид Вайзман",
-                text: "Командир миссии Artemis II. NASA, США.",
-                status: "commander",
-            },
-            {
-                id: 2,
-                src: "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Jsc2023e0016433_alt.jpg/1280px-Jsc2023e0016433_alt.jpg",
-                title: "Виктор Гловер",
-                text: "Пилот миссии Artemis II. NASA, США.",
-                status: "pilot",
-            },
-            {
-                id: 3,
-                src: "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/Jsc2023e0016435_alt.jpg/1280px-Jsc2023e0016435_alt.jpg",
-                title: "Кристина Кох",
-                text: "Специалист миссии Artemis II. NASA, США.",
-                status: "specialist",
-            },
-            {
-                id: 4,
-                src: "https://upload.wikimedia.org/wikipedia/commons/thumb/5/50/Jsc2023e0016436_alt2.jpg/500px-Jsc2023e0016436_alt2.jpg",
-                title: "Джереми Хансен",
-                text: "Специалист миссии Artemis II. CSA, Канада.",
-                status: "specialist",
-            },
-        ];
     }
 
     get pageRoot() {
@@ -58,18 +31,17 @@ export class MainPage {
     }
 
     addCard() {
-        const firstCard = this.data[0];
-        const newCard = {...firstCard};
-        newCard.id = this.data.length + 1;
-
-        this.data.push(newCard);
-        this.render();
+        const createPage = new CreateAstronautPage(this.parent);
+        createPage.render();
     }
 
     deleteCard(e) {
         const cardId = e.target.dataset.id;
-        this.data = this.data.filter(item => item.id != cardId);
-        this.render();
+        ajax.delete(astronautUrls.removeAustronautById(cardId), (data, status) => {
+            if (status == 204) {
+                this.render();
+            }
+        });
     }
 
     clickCard(e) {
@@ -82,12 +54,50 @@ export class MainPage {
         this.render();
     }
 
-    filterCards(status) {
-        if (status === "all") {
-            return this.data;
-        }
+    filterCards(data, status) {
+        if (!data) return [];  
+        if (status === "all") return data;
+        return data.filter(item => item.status === status);
+    }
 
-        return this.data.filter(item => item.status === status);
+    getData() {
+        ajax.get(astronautUrls.getAustronauts(), (data) => {
+            this.renderData(data);
+        });
+    }
+
+    renderData(items) {
+        if (!items) return;  // защита от null
+
+        const hwTasks = [
+            {
+                label: "1.3",
+                description: "sumOfSquares(arr) — сумма квадратов элементов массива.<br><code>[2014, 2022, 2026]</code>",
+                getAnswer: () => String(sumOfSquares([2014, 2022, 2026])),
+            },
+            {
+                label: "1.7",
+                description: "isEqualObj(a, b) — сравнивает два объекта.<br><code>{name: 'Glover', agency: 'NASA'}</code>",
+                getAnswer: () => String(isEqualObj({ name: "Glover", agency: "NASA" }, { name: "Glover", agency: "NASA" })),
+            },
+            {
+                label: "2.10",
+                description: 'countPrefixes(words, str) — количество слов-префиксов строки.<br><code>["ar","art","artem","reid","vi","artemis"], str="artemis"</code>',
+                getAnswer: () => String(countPrefixes(["ar", "art", "artem", "reid", "vi", "artemis"], "artemis")),
+            },
+            {
+                label: "3.8 Палиндром",
+                description: "isPalindrom — два решения (reverse и два указателя).<br><code>'А луна канула'</code>",
+                getAnswer: () => String(isPalindrom1("А луна канула")),
+            },
+        ];
+
+        const filtered = this.filterCards(items, this.currentFilter);
+        filtered.forEach((item, index) => {
+            const orionCard = new OrionCard(this.pageRoot);
+            // исправлен deleteCard — было this.deleteCard(this), должно быть bind
+            orionCard.render(item, this.clickCard.bind(this), this.deleteCard.bind(this), hwTasks[index]);
+        });
     }
 
     render() {
@@ -117,33 +127,6 @@ export class MainPage {
         const homeButton = new ButtonHome(this.parent);
         homeButton.render(this.clickHome.bind(this));
 
-        const hwTasks = [
-            {
-                label: "1.3",
-                description: "sumOfSquares(arr) — сумма квадратов элементов массива.<br><code>[2014, 2022, 2026]</code>",
-                getAnswer: () => String(sumOfSquares([2014, 2022, 2026])),
-            },
-            {
-                label: "1.7",
-                description: "isEqualObj(a, b) — сравнивает два объекта.<br><code>{name: 'Glover', agency: 'NASA'}</code>",
-                getAnswer: () => String(isEqualObj({ name: "Glover", agency: "NASA" }, { name: "Glover", agency: "NASA" })),
-            },
-            {
-                label: "2.10",
-                description: 'countPrefixes(words, str) — количество слов-префиксов строки.<br><code>["ar","art","artem","reid","vi","artemis"], str="artemis"</code>',
-                getAnswer: () => String(countPrefixes(["ar", "art", "artem", "reid", "vi", "artemis"], "artemis")),
-            },
-            {
-                label: "3.8 Палиндром",
-                description: "isPalindrom — два решения (reverse и два указателя).<br><code>'А луна канула'</code>",
-                getAnswer: () => String(isPalindrom1("А луна канула")),
-            },
-        ];
-
-        const filtered = this.filterCards(this.currentFilter);
-        filtered.forEach((item, index) => {
-            const orionCard = new OrionCard(this.pageRoot);
-            orionCard.render(item, this.clickCard.bind(this), this.deleteCard.bind(this), hwTasks[index]);
-        });
+        this.getData();
     }
 }
