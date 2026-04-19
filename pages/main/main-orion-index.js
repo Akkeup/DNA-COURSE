@@ -67,7 +67,7 @@ export class MainPage {
     }
 
     renderData(items) {
-        if (!items) return;  // защита от null
+        if (!items) return;
 
         const hwTasks = [
             {
@@ -95,7 +95,6 @@ export class MainPage {
         const filtered = this.filterCards(items, this.currentFilter);
         filtered.forEach((item, index) => {
             const orionCard = new OrionCard(this.pageRoot);
-            // исправлен deleteCard — было this.deleteCard(this), должно быть bind
             orionCard.render(item, this.clickCard.bind(this), this.deleteCard.bind(this), hwTasks[index]);
         });
     }
