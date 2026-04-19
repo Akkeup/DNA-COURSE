@@ -35,12 +35,9 @@ export class OrionFlyingPage {
         this.id = id;
     }
 
-    getData(callback) {
-        ajax.get(astronautUrls.getAustronautById(this.id), (data) => {
-            if (!data) return;
-            data.accordionItems = accordionData[this.id] || [];
-            callback(data);
-        });
+    getData() {
+        ajax.get(astronautUrls.getAustronautById(this.id))
+            .then(data => this.renderData(data));
     }
 
     getRoot() {
@@ -56,6 +53,17 @@ export class OrionFlyingPage {
         mainPage.render();
     }
 
+    renderData(data) {
+        const orion = new OrionComponents(this.getRoot());
+        orion.render(data);
+
+        const model3d = new Orion3DModel(this.getRoot());
+        model3d.render();
+
+        const accordion = new OrionAccordion(this.getRoot());
+        accordion.render(data.accordionItems);
+    }
+
     render() {
         this.parent.innerHTML = "";
         const html = this.getHTML();
@@ -64,15 +72,6 @@ export class OrionFlyingPage {
         const homeButton = new ButtonHome(this.parent);
         homeButton.render(this.clickHome.bind(this));
 
-        this.getData((data) => {
-            const orion = new OrionComponents(this.getRoot());
-            orion.render(data);
-
-            const model3d = new Orion3DModel(this.getRoot());
-            model3d.render();
-
-            const accordion = new OrionAccordion(this.getRoot());
-            accordion.render(data.accordionItems);
-        });
+        this.getData();
     }
 }

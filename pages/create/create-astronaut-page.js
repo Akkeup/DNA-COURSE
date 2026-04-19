@@ -60,12 +60,8 @@ export class CreateAstronautPage {
             src: document.getElementById("input-src").value,
         };
 
-        ajax.post(astronautUrls.createAustronaut(), newCard, (data, status) => {
-            if (status === 201) {
-                const mainPage = new MainPage(this.parent);
-                mainPage.render();
-            }
-        });
+        ajax.post(astronautUrls.createAustronaut(), newCard)
+            .then(() => this.render());
     }
 
     render() {

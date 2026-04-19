@@ -37,11 +37,8 @@ export class MainPage {
 
     deleteCard(e) {
         const cardId = e.target.dataset.id;
-        ajax.delete(astronautUrls.removeAustronautById(cardId), (data, status) => {
-            if (status == 204) {
-                this.render();
-            }
-        });
+        ajax.delete(astronautUrls.removeAustronautById(cardId))
+            .then(() => this.render());
     }
 
     clickCard(e) {
@@ -61,9 +58,8 @@ export class MainPage {
     }
 
     getData() {
-        ajax.get(astronautUrls.getAustronauts(), (data) => {
-            this.renderData(data);
-        });
+        ajax.get(astronautUrls.getAustronauts())
+            .then(data => this.renderData(data));
     }
 
     renderData(items) {
