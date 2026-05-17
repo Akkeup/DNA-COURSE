@@ -1,6 +1,4 @@
 import { MainPage } from "../main/main-orion-index.js";
-import { ajax } from "../../modules/ajax.js";
-import { astronautUrls } from "../../modules/arstronautsUrls.js";
 import { ButtonHome } from "../../components/header/header.js";
 
 export class CreateAstronautPage {
@@ -40,7 +38,7 @@ export class CreateAstronautPage {
                     <label class="form-label">Фото (URL)</label>
                     <input type="text" class="form-control" id="input-src">
                 </div>
-                <button class="btn btn-success" id="submit-btn">Создать</button>
+                <p class="text-muted" style="margin-top: 1rem;">Создание недоступно: POST-запрос с Content-Type: application/json вызывает CORS preflight, который не обходится расширением.</p>
             </div>
         `;
     }
@@ -50,30 +48,10 @@ export class CreateAstronautPage {
         mainPage.render();
     }
 
-    submit() {
-        const newCard = {
-            title: document.getElementById("input-title").value,
-            text: document.getElementById("input-text").value,
-            country: document.getElementById("input-country").value,
-            status: document.getElementById("input-status").value,
-            birthDate: document.getElementById("input-birthDate").value,
-            src: document.getElementById("input-src").value,
-        };
-
-        ajax.post(astronautUrls.createAustronaut(), newCard, (data, status) => {
-            if (status === 201) {
-                const mainPage = new MainPage(this.parent);
-                mainPage.render();
-            }
-        });
-    }
-
     render() {
         this.parent.innerHTML = "";
         const html = this.getHTML();
         this.parent.insertAdjacentHTML("beforeend", html);
-
-        document.getElementById("submit-btn").addEventListener("click", this.submit.bind(this));
 
         const homeButton = new ButtonHome(this.parent);
         homeButton.render(this.clickHome.bind(this));
